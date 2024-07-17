@@ -6,9 +6,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
-    @GetMapping
+    @GetMapping("/cicd")
     @ResponseBody
     public String index(){
-        return "Hello!";
+        return "Hello! Welcome to CI/CD";
     }
+
+    @GetMapping("/")
+    public String root(){
+        return "redirect:/question/list";
+    }
+
 }

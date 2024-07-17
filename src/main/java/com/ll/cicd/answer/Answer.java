@@ -1,5 +1,6 @@
-package com.ll.cicd;
+package com.ll.cicd.answer;
 
+import com.ll.cicd.question.Question;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
