@@ -1,12 +1,14 @@
 package com.ll.cicd.question;
 
 import com.ll.cicd.answer.Answer;
+import com.ll.cicd.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,4 +30,12 @@ public class Question {
     // mappedBy는 참조 엔티티의 속성명을 정의한다.
     // Answer 엔티티에서 Question 엔티티를 참조한 속성인 question을 mappedBy에 전달해야 한다.
     private List<Answer> answerList;
+
+    @ManyToOne
+    private SiteUser author;
+
+    private LocalDateTime modifyDate;
+
+    @ManyToMany
+    Set<SiteUser> voter;
 }

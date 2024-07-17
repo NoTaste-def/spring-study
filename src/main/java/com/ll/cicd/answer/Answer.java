@@ -1,11 +1,13 @@
 package com.ll.cicd.answer;
 
 import com.ll.cicd.question.Question;
+import com.ll.cicd.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,4 +24,12 @@ public class Answer {
 
     @ManyToOne // N:1 관계를 나타냄. N이 Answer, 1이 Question
     private Question question;
+
+    @ManyToOne
+    private SiteUser author;
+
+    private LocalDateTime modifyDate;
+
+    @ManyToMany
+    Set<SiteUser> voter;
 }
