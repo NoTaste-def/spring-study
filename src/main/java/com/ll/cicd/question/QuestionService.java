@@ -45,11 +45,25 @@ public class QuestionService {
         };
     }
 
-    public Question getQuestion(Integer id){
+    // 조회수 구현 이전 메소드
+//    public Question getQuestion(Integer id){
+//        Optional<Question> question = this.questionRepository.findById(id);
+//        if(question.isPresent()){
+//            return question.get();
+//        }else{
+//            throw new DataNotFoundException("question not found");
+//        }
+//    }
+
+    // 조회수 구현 이후 메소드
+    public Question getQuestion(Integer id) {
         Optional<Question> question = this.questionRepository.findById(id);
-        if(question.isPresent()){
-            return question.get();
-        }else{
+        if (question.isPresent()) {
+            Question question1 = question.get();
+            question1.setView(question1.getView()+1);
+            this.questionRepository.save(question1);
+            return question1;
+        } else {
             throw new DataNotFoundException("question not found");
         }
     }
